@@ -14,8 +14,13 @@
   file: path={{systemd_mount_dir}} state=directory mode=0755
   become: yes
 
+- name: systemd-escape systemd_mount_mountpoint
+  command: "systemd-escape -p --suffix=mount '{{ systemd_mount_mountpoint }}'"
+  register: systemd_escape_mount_mountpoint
+  always_run: true
+
 - name: Set mount conf
   become: yes
-  template: src=mount.mount.j2 dest="{{systemd_mount_dir}}/{{systemd_mount_mountpoint|replace('/', '', 1) | replace('/', '-')}}.mount"
+  template: src=mount.mount.j2 dest="{{systemd_mount_dir}}/{{ systemd_escape_mount_mountpoint.stdout }}"
   notify:
     - Reload systemd
