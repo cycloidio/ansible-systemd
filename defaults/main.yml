@@ -1,0 +1,23 @@
+---
+
+systemd_mount_dir: /etc/systemd/system
+systemd_dropin_dir: "/etc/systemd/system/{{systemd_dropin_service_name}}.service.d"
+systemd_dropin_name: "{{systemd_dropin_service_name}}"
+systemd_dropin_priority: "40"
+systemd_dropin_content: []
+
+#
+# Timer
+#
+# systemd_timer_service_name:
+systemd_timer_onbootsec: 5min
+systemd_timer_onunitactivesec: 60min
+systemd_timer_dir: /etc/systemd/system
+
+#
+# mount args https://www.freedesktop.org/software/systemd/man/systemd.mount.html
+#
+# systemd_mount_device
+# systemd_mount_mountpoint
+systemd_mount_type: ext4
+# systemd_mount_options

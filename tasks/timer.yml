@@ -1,0 +1,16 @@
+---
+
+- name: "Check systemd_timer_service_name"
+  fail:
+    msg: "The variable systemd_timer_service_name should be defined"
+  when: systemd_timer_service_name is not defined
+
+- name: Create systemd timer directory
+  file: path={{systemd_timer_dir}} state=directory mode=0755
+  become: yes
+
+- name: Set timer conf
+  become: yes
+  template: src=timer.timer.j2 dest="{{systemd_timer_dir}}/{{systemd_timer_service_name}}.timer"
+  notify:
+    - Reload systemd

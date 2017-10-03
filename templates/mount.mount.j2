@@ -1,0 +1,8 @@
+[Mount]
+What={{systemd_mount_device}}
+Where={{systemd_mount_mountpoint}}
+Type={{systemd_mount_type}}
+
+{% if systemd_mount_options is defined %}
+Options={{systemd_mount_options}}
+{% endif %}

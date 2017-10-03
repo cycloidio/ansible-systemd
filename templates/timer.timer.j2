@@ -1,0 +1,9 @@
+[Unit]
+Description=Systemd timer unit for {{systemd_timer_service_name}}
+
+[Timer]
+OnBootSec={{systemd_timer_onbootsec | default('5min')}}
+OnUnitActiveSec={{systemd_timer_onunitactivesec | default('60min')}}
+
+[Install]
+WantedBy=timers.target

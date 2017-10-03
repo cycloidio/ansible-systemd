@@ -1,0 +1,21 @@
+---
+
+- name: "Check systemd_mount_device"
+  fail:
+    msg: "The variable systemd_mount_device should be defined"
+  when: systemd_mount_device is not defined
+
+- name: "Check systemd_mount_mountpoint"
+  fail:
+    msg: "The variable systemd_mount_mountpoint should be defined"
+  when: systemd_mount_mountpoint is not defined
+
+- name: Create systemd mount directory
+  file: path={{systemd_mount_dir}} state=directory mode=0755
+  become: yes
+
+- name: Set mount conf
+  become: yes
+  template: src=mount.mount.j2 dest="{{systemd_mount_dir}}/{{systemd_mount_mountpoint|replace('/', '', 1) | replace('/', '-')}}.mount"
+  notify:
+    - Reload systemd

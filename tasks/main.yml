@@ -1,0 +1,11 @@
+---
+
+- name: "Check if we give the systemd_type"
+  fail:
+    msg: "The variable systemd_type should contain mount, timer or dropin"
+  when: systemd_type is not defined or systemd_type not in ['mount', 'dropin', 'timer']
+
+- include: "{{ systemd_type }}.yml"
+
+# Ensure we flushed handlers to be sure systemd reload and take care of new config files.
+- meta: flush_handlers

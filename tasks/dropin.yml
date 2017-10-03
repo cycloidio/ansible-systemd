@@ -1,0 +1,11 @@
+---
+
+- name: Create systemd drop-in directory
+  file: path={{systemd_dropin_dir}} state=directory mode=0755
+  become: yes
+
+- name: Set dropin conf
+  become: yes
+  template: src=dropin.conf.j2 dest="{{systemd_dropin_dir}}/{{systemd_dropin_priority}}-{{systemd_dropin_name}}.conf"
+  notify:
+    - Reload systemd
