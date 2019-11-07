@@ -20,12 +20,14 @@ Role Variables
 
 **Timer:**
 
-| **Variable**                    | **Description**                | **Default**           | **Required** |
-|---------------------------------|--------------------------------|-----------------------|--------------|
-| `systemd_timer_service_name`    | Name of the timer service      |                       | **Yes**      |
-| `systemd_timer_onbootsec`       | Define systemd OnBootSec       |  `5min`               |              |
-| `systemd_timer_onunitactivesec` | Define systemd OnUnitActiveSec | `60min`               |              |
-| `systemd_timer_dir`             | Systemd directory for timers   | `/etc/systemd/system` |              |
+| **Variable**                      | **Description**                 | **Default**           | **Required** |
+|-----------------------------------|---------------------------------|-----------------------|--------------|
+| `systemd_timer_service_name`      | Name of the timer service       |                       | **Yes**      |
+| `systemd_timer_onbootsec`         | Define systemd OnBootSec        | `5min`                |              |
+| `systemd_timer_onunitactivesec`   | Define systemd OnUnitActiveSec  | `60min`               |              |
+| `systemd_timer_dir`               | Systemd directory for timers    | `/etc/systemd/system` |              |
+| `systemd_timer_OnCalendar`        | Systemd timer onCalendar        |                       |              |
+| `systemd_timer_RemainAfterElapse` | Systemd timer RemainAfterElapse |                       |              |
 
 **Mount:** (https://www.freedesktop.org/software/systemd/man/systemd.mount.html)
 
