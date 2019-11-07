@@ -4,6 +4,12 @@ Description=Systemd timer unit for {{systemd_timer_service_name}}
 [Timer]
 OnBootSec={{systemd_timer_onbootsec | default('5min')}}
 OnUnitActiveSec={{systemd_timer_onunitactivesec | default('60min')}}
+{% if systemd_timer_OnCalendar is defined %}
+OnCalendar={{ systemd_timer_OnCalendar }}
+{% endif -%}
+{% if systemd_timer_RemainAfterElapse is defined %}
+RemainAfterElapse={{ systemd_timer_RemainAfterElapse }}
+{% endif -%}
 
 [Install]
 WantedBy=timers.target

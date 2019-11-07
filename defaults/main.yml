@@ -21,3 +21,6 @@ systemd_timer_dir: /etc/systemd/system
 # systemd_mount_mountpoint
 systemd_mount_type: ext4
 # systemd_mount_options
+
+#systemd_timer_OnCalendar: *-*-* 00/2:00:00
+#systemd_timer_RemainAfterElapse: yes
