@@ -28,6 +28,8 @@ Role Variables
 | `systemd_timer_dir`               | Systemd directory for timers    | `/etc/systemd/system` |              |
 | `systemd_timer_OnCalendar`        | Systemd timer onCalendar        |                       |              |
 | `systemd_timer_RemainAfterElapse` | Systemd timer RemainAfterElapse |                       |              |
+| `systemd_timer_service_enabled`   | Timer enabled at boot           | yes                   |              |
+
 
 **Mount:** (https://www.freedesktop.org/software/systemd/man/systemd.mount.html)
 

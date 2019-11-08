@@ -14,3 +14,9 @@
   template: src=timer.timer.j2 dest="{{systemd_timer_dir}}/{{systemd_timer_service_name}}.timer"
   notify:
     - Reload systemd
+
+- name: Enable service timer on boot
+  service:
+    name: etcd-backup.timer
+    daemon_reload: true
+    enabled: "{{ systemd_timer_service_enabled }}"
