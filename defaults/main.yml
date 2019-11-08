@@ -13,6 +13,7 @@ systemd_dropin_content: []
 systemd_timer_onbootsec: 5min
 systemd_timer_onunitactivesec: 60min
 systemd_timer_dir: /etc/systemd/system
+systemd_timer_service_enabled: True
 
 #
 # mount args https://www.freedesktop.org/software/systemd/man/systemd.mount.html

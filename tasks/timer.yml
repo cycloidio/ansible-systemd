@@ -14,3 +14,9 @@
   template: src=timer.timer.j2 dest="{{systemd_timer_dir}}/{{systemd_timer_service_name}}.timer"
   notify:
     - Reload systemd
+
+- name: enable a timer on boot
+  systemd:
+    name: "{{ systemd_timer_service_name }}.timer"
+    daemon_reload: yes
+    enabled: "{{ systemd_timer_service_enabled }}"
