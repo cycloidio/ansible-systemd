@@ -2,3 +2,9 @@
 - name: Reload systemd
   become: yes
   command: systemctl daemon-reload
+
+- name: Start mount
+  service:
+    name: "{{ systemd_escape_mount_mountpoint.stdout }}"
+    state: started
+  when: systemd_mount_started
