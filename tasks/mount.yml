@@ -24,3 +24,9 @@
   template: src=mount.mount.j2 dest="{{systemd_mount_dir}}/{{ systemd_escape_mount_mountpoint.stdout }}"
   notify:
     - Reload systemd
+    - Start mount
+
+- name: Ensure the service is started
+  meta: flush_handlers
+  when: systemd_mount_started
+
